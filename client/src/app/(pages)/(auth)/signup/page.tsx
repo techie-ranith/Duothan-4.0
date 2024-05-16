@@ -66,16 +66,19 @@ export default function Signin () {
       
     
       <Box
-        
+        bgcolor=" rgb(3 7 18) "
       >
         <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '100dvh',
-            width: '100%',
-            px: 2,
-          }}
+       sx={{
+        backgroundImage: 'url("/Group 1000000908.png")' ,
+        backgroundSize: 'fit',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
         >
           <Box
             component="header"
@@ -114,7 +117,7 @@ export default function Signin () {
           >
             <Stack gap={4} sx={{ mb: 2 }}>
               <Stack gap={1}>
-                <div className=' text-[40px]  align w-full  text-center pb-10 font-bold'>
+                <div className=' text-[40px]  align w-full  text-center pb-10 font-bold' style={{ color: 'white' }}>
                 Sign Up
                 </div>
 
@@ -129,7 +132,7 @@ export default function Signin () {
                 variant="soft"
                 color="neutral"
                 fullWidth
-               
+                sx={{ bgcolor: 'rgb(66, 133, 244)' }}
               >
                 Continue with Google
               </Button>
@@ -146,23 +149,23 @@ export default function Signin () {
 
 
                 <FormControl required>
-                  <FormLabel>Email</FormLabel>
-                  <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} />
+                  <FormLabel style={{ color: 'white' }}>Email</FormLabel>
+                  <Input type="email" name="email" onChange={(e:any)=>setEmail(e.target.value)} />
                 </FormControl>
 
                 <FormControl >
-                  <FormLabel>First Name</FormLabel>
-                  <Input type="text" name="firstname"  onChange={(e)=>setFirstname(e.target.value)}/>
+                  <FormLabel style={{ color: 'white' }}>First Name</FormLabel>
+                  <Input type="text" name="firstname"  onChange={(e:any)=>setFirstname(e.target.value)}/>
                 </FormControl>
 
                 <FormControl required>
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text" name="lastname" onChange={(e)=>setLastname(e.target.value)} />
+                  <FormLabel style={{ color: 'white' }}>Last Name</FormLabel>
+                  <Input type="text" name="lastname" onChange={(e:any)=>setLastname(e.target.value)} />
                 </FormControl>
 
                 <FormControl required>
-                  <FormLabel>Password</FormLabel>
-                  <Input type="password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
+                  <FormLabel style={{ color: 'white' }}>Password</FormLabel>
+                  <Input type="password" name="password" onChange={(e:any)=>setPassword(e.target.value)}/>
                 </FormControl>
                 {error && <Typography color="danger" sx={{ mt: 1 }}>{error}</Typography>}
                 <Stack gap={4} sx={{ mt: 2 }}>
@@ -173,7 +176,7 @@ export default function Signin () {
                       alignItems: 'center',
                     }}
                   >
-                    <Checkbox size="sm" label="Remember me" name="persistent" />
+                    <Checkbox size="sm" style={{ color: 'white' }}  label="Remember me" name="persistent" />
                     <Link level="title-sm" href="#replace-with-a-link">
                       Forgot your password?
                     </Link>
@@ -188,7 +191,7 @@ export default function Signin () {
           </Box>
           <Box component="footer" sx={{ py: 3 }}>
             <Typography level="body-xs" textAlign="center">
-              © Your company {new Date().getFullYear()}
+              © Our company {new Date().getFullYear()}
             </Typography>
           </Box>
         </Box>
