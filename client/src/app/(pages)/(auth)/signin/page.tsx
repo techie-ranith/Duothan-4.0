@@ -10,17 +10,12 @@ import Checkbox from '@mui/joy/Checkbox';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
-import IconButton, { IconButtonProps } from '@mui/joy/IconButton';
 import Link from '@mui/joy/Link';
 import Input from '@mui/joy/Input';
 import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
-import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
-import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
-import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
-import { SetMeal } from '@mui/icons-material';
 
-
+import { signIn } from 'next-auth/react';
 export default function Signin () {
 
   const [email, SetEmail] = React.useState('');
@@ -138,6 +133,8 @@ export default function Signin () {
                 color="neutral"
                 fullWidth
                 sx={{ bgcolor: 'rgb(66, 133, 244)' }}
+                onClick={() => signIn('google')}
+        
               >
                 Continue with Google
               </Button>
