@@ -37,16 +37,18 @@ export default function Signin () {
           console.log('Response: logeed');
           const form = e.target;
           form.reset();
-         
+          return '/employee/Overview';
+          setError('');
   
         } else {
           const result = await response.json();
-        setError(result.message || 'Sign up failed for an unknown reason')
+        setError(result.message || 'Sign in failed for an unknown reason')
         }
       }
-      catch(err:any){
-        console.error('Fetch error:', err);
-        alert('Sign up failed');
+      catch(error){
+        setError( 'Sign in failed for an unknown reason');
+       
+      
       }
 
 
@@ -123,7 +125,7 @@ export default function Signin () {
 
                 <Typography level="body-sm">
                   New to company?{' '}
-                  <Link href="#replace-with-a-link" level="title-sm">
+                  <Link href="/signup" level="title-sm">
                     Sign up!
                   </Link>
                 </Typography>
@@ -151,11 +153,11 @@ export default function Signin () {
               >
                 <FormControl required>
                   <FormLabel style={{ color: 'white' }}>Email</FormLabel>
-                  <Input type="email" name="email" onChange={(e:any)=>SetEmail(e.target.value)}/>
+                  <Input type="email" name="email" onChange={(e)=>SetEmail(e.target.value)}/>
                 </FormControl>
                 <FormControl required>
                   <FormLabel style={{ color: 'white' }}>Password</FormLabel>
-                  <Input type="password" name="password" onChange={(e:any)=>SetPassword(e.target.value)} />
+                  <Input type="password" name="password" onChange={(e)=>SetPassword(e.target.value)} />
                 </FormControl>
                 {error && <Typography color="danger" sx={{ mt: 1 }}>{error}</Typography>}
                 <Stack gap={4} sx={{ mt: 2 }}>
