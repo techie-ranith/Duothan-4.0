@@ -1,5 +1,3 @@
-"use client";
-
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -9,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function ButtonAppBar() {
   const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate("/");
+  };
 
   const handleSignInClick = () => {
     navigate("/signin");
@@ -29,7 +31,8 @@ export default function ButtonAppBar() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, color: "white" }}
+            sx={{ flexGrow: 1, color: "white", cursor: "pointer" }}
+            onClick={handleHomeClick} // Added onClick event handler
           >
             Logo
           </Typography>
