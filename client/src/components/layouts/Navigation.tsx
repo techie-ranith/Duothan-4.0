@@ -19,7 +19,7 @@ export default function ButtonAppBar() {
   };
 
   const handleAdminLoginClick = () => {
-    navigate("/admin-login");
+    navigate("/adminlogin");
   };
 
   return (
