@@ -1,6 +1,6 @@
 const UserDetails = () => {
   const user = {
-    title: "DTP code",
+    title: "DTP code : #1234",
     name: "John Doe",
     email: "john.doe@example.com",
     phone: "+1234567890",
