@@ -18,15 +18,18 @@ connectMongoDB().then(() => {
 });
 
 app.post('/authsignup', async (req, response) => {
-    const { firstname, lastname, email, password } = req.body; 
+    const { firstname, lastname, email, password ,username,mobile,confirmpassword} = req.body; 
     try {
-        const existingUser = await User.findOne({ email }).maxTimeMS(30000);
+        const existingUser = await User.findOne({ username }).maxTimeMS(30000);
         if (existingUser) {
-            return response.status(409).json({ message: 'Email already exists' });
+            return response.status(409).json({ message: 'Username already exists' });
+        }
+        if (password !== confirmpassword) {
+            return response.status(400).json({ message: 'Passwords do not match' });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         
-        await User.create({ firstname, lastname, email, password: hashedPassword });
+        await User.create({ firstname, lastname, email, mobile, username, password: hashedPassword });
         response.status(200).json({ message: 'User registered successfully' });
     } catch (error) {
         console.error(error);
@@ -39,9 +42,9 @@ app.post('/authsignup', async (req, response) => {
 
 app.post('/authsignin', async (req, response) => {
         
-    const { email, password } = req.body; 
+    const {username, dtp, password } = req.body; 
     try {
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ username });
         if (!existingUser) {
             return response.status(404).json({ message: 'User not found' });
         }

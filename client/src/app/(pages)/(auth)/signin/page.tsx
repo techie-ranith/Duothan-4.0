@@ -18,8 +18,9 @@ import Stack from '@mui/joy/Stack';
 import { signIn } from 'next-auth/react';
 export default function Signin () {
 
-  const [email, SetEmail] = React.useState('');
-  const [password, SetPassword] = React.useState('');                                                                                     
+  const [username, SetUsername] = React.useState('');
+  const [password, SetPassword] = React.useState('');  
+  const [dtp, SetDtp] = React.useState('');                                                                                 
   const [error, setError] = React.useState('');
 
   const haddlesubmitq =async (e:any) =>
@@ -30,7 +31,7 @@ export default function Signin () {
         const response= await fetch('http://localhost:5000/authsignin',{
           method:'POST',
           headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({email,password})
+          body:JSON.stringify({ username, password, dtp})
 
         });
         if (response.ok) {
@@ -152,13 +153,22 @@ export default function Signin () {
                 
               >
                 <FormControl required>
-                  <FormLabel style={{ color: 'white' }}>Email</FormLabel>
-                  <Input type="email" name="email" onChange={(e)=>SetEmail(e.target.value)}/>
+                  <FormLabel style={{ color: 'white' }}>Username</FormLabel>
+                  <Input type="text" name="username" onChange={(e)=>SetUsername(e.target.value)}/>
                 </FormControl>
+
+                <FormControl >
+                  <FormLabel style={{ color: 'white' }}>DTP Code</FormLabel>
+                  <Input type="text" name="Dtp" onChange={(e)=>SetUsername(e.target.value)}/>
+                </FormControl>
+
                 <FormControl required>
                   <FormLabel style={{ color: 'white' }}>Password</FormLabel>
                   <Input type="password" name="password" onChange={(e)=>SetPassword(e.target.value)} />
                 </FormControl>
+
+
+
                 {error && <Typography color="danger" sx={{ mt: 1 }}>{error}</Typography>}
                 <Stack gap={4} sx={{ mt: 2 }}>
                   <Box
