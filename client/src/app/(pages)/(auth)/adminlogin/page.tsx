@@ -16,6 +16,7 @@ import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
 
 import { signIn } from 'next-auth/react';
+import { redirect } from 'next/dist/server/api-utils';
 export default function Signin () {
 
   const [username, SetUsername] = React.useState('');
@@ -35,12 +36,10 @@ export default function Signin () {
         });
         if (response.ok) {
           console.log('Response: logeed');
-          const form = e.target;
-          form.reset();
-          return '/employee/Overview';
-          setError('');
-  
-        } else {
+          window.location.href = 'http://localhost:3000/admin/overview';
+        } 
+        
+        else {
           const result = await response.json();
         setError(result.message || 'Sign in failed for an unknown reason')
         }
