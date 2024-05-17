@@ -86,7 +86,8 @@ To run both servers simultaneously, follow the steps below:
     bash
     cd client
     npm run dev
-    
+
+UI/UX Design https://www.figma.com/design/oBTyc9CmtrVPF5NzTDyVI1/Untitled?node-id=0%3A1&t=7BQikXu6t2lmjB9F-1
 
 The backend server will be running on http://localhost:5000 and the frontend server on http://localhost:3000.
 
