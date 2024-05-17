@@ -2,7 +2,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const JobRoutes = require('./routes/JobRoutes');
+const Admin = require('./routes/AdminRoutes');
+const user = require('./routes/AdminRoutes');
+const Admin = require('./routes/AdminRoutes');
 const OrganizationRoutes = require("./routes/OrganizationRoutes")
 
 dotenv.config();
@@ -12,7 +14,9 @@ const port = process.env.PORT || 8080;
 // Middleware
 app.use(express.json());
 // Routes
-app.use('/api/Jobs', JobRoutes);
+app.use('/api/admin', );
+app.use('/api/admin', JobRoutes);
+app.use('/api/admin', JobRoutes);
 app.use('/api/Organization',OrganizationRoutes);
 
 // Connect to MongoDB
