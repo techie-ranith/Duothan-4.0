@@ -44,7 +44,11 @@ export default function Signin () {
       });
       if (response.ok) {
        console.log('Response: logeed');
+       const responseData = await response.json(); 
+       const { message, dtp } = responseData;
+       alert(`User registered successfully!\nDTP code: ${dtp}`);
         const form = e.target;
+
         form.reset();
 
         
