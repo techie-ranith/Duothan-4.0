@@ -112,7 +112,72 @@ app.post('/authsignin', async (req, response) => {
 
 
 
+
+
+
 });
+
+
+
+
+
+
+
+
+    app.post('/authadminlog', async (req, response) => {
+        
+        const {username, dtp, password } = req.body; 
+        try {
+            const existingUser = await User.findOne({ username }).maxTimeMS(30000);
+            if (!existingUser) {
+                return response.status(404).json({ message: 'User not found' });
+            }
+            const isPasswordCorrect = await (password, existingUser.password);
+            if (!isPasswordCorrect) {
+                return response.status(401).json({ message: 'Invalid credentials' });
+            }
+            
+            if (dtp !== existingUser.dtp) {
+                return response.status(401).json({ message: 'Invalid dtp' });
+            }
+            response.status(200).json({ message: 'User Logged successfully' });
+          
+    
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });  
+        }
+    
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(5000, () => {
     console.log('Server running on port 5000');
