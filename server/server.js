@@ -18,15 +18,15 @@ connectMongoDB().then(() => {
 });
 
 app.post('/authsignup', async (req, response) => {
-    const { firstname, lastname, email, password } = req.body; 
+    const { firstname, lastname, email, password ,username,mobile} = req.body; 
     try {
-        const existingUser = await User.findOne({ email }).maxTimeMS(30000);
+        const existingUser = await User.findOne({ username }).maxTimeMS(30000);
         if (existingUser) {
-            return response.status(409).json({ message: 'Email already exists' });
+            return response.status(409).json({ message: 'Username already exists' });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         
-        await User.create({ firstname, lastname, email, password: hashedPassword });
+        await User.create({ firstname, lastname, email, mobile, username, password: hashedPassword });
         response.status(200).json({ message: 'User registered successfully' });
     } catch (error) {
         console.error(error);

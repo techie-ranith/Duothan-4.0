@@ -23,6 +23,16 @@ const userSchema = new Schema(
             type:String,
             required:true
         },
+        username:
+        {
+            type:String,
+            required:true
+        },
+        mobile:
+        {
+            type:String,
+            required:true
+        },
     }
     ,{
         timestamps:true,
