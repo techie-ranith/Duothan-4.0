@@ -1,98 +1,97 @@
-# Duothan 4.0
+# AI-Driven Talent Acquisition Platform
 
-Neotropolis, a cutting-edge futuristic city, is facing challenges in managing its transport system efficiently. With the city's rapid growth and technological advancements, traditional transport systems are proving inadequate. As a result, the city is witnessing traffic congestion, parking issues, and inefficient public transport.
+Welcome to the AI-Driven Talent Acquisition Platform repository! This platform is designed to revolutionize the recruitment process for businesses by leveraging advanced AI technologies. Below you'll find an overview of the product and instructions for setting up the MERN (MongoDB, Express.js, React.js, Node.js) stack for both the client and server sides.
 
-To address these challenges, Neotropolis aims to implement a Smart Transport Management System (STMS) that integrates various transport modes, optimizes traffic flow, and provides seamless connectivity for residents and visitors.
+## Table of Contents
+- [Overview](#overview)
+- [Technologies](#technologies)
+- [Prerequisites](#prerequisites)
+- [Setup Instructions](#setup-instructions)
+  - [Backend (Express.js)](#backend-expressjs)
+  - [Frontend (Next.js)](#frontend-nextjs)
+- [Running the Servers](#running-the-servers)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Problem Statement
+## Overview
+The AI-Driven Talent Acquisition Platform aims to streamline and enhance the recruitment process through AI-powered candidate screening, job matching, and analytics. It provides an efficient and effective way for businesses to find the right talent while minimizing manual effort.
 
-When someone arrives in Neotropolis, they should park their vehicle at the "Collective Neotropolis Parkinglot". The system will issue a digital ticket through a web interface, which will serve as a comprehensive transport pass. This digital ticket should control everything related to transport, including public transport access, payments, tracking, and more. However, building such a system requires addressing several key functionalities:
+## Technologies
+- *Backend*: Node.js, Express.js, MongoDB
+- *Frontend*: React.js (Next.js)
+- *AI/ML*: Integrated within the backend services for candidate matching and analytics
 
-1. Digital Transport Pass:
-   - Issue digital tickets to users upon parking.
-   - Integrate with public transport systems for seamless access.
-   - Enable cashless payments for parking and public transport.
-2. Real-time Transport Tracking:
-   - Track the location of public transport vehicles in real-time.
-   - Provide users with accurate arrival times and route information.
-3. Integrated Payment System:
-   - Allow users to top-up their transport passes.
-   - Enable contactless payments for all transport services.
-4. Traffic Optimization and Management:
-   - Analyze traffic patterns to optimize signal timings.
-   - Provide alternative routes during congestion to reduce travel time.
-5. User-Friendly Web Interface:
-   - Enable users to easily manage their transport pass.
-   - Futuristic User Interface
-   - Provide a comprehensive dashboard displaying transport options, payments, and journey history.
+## Prerequisites
+Before you begin, ensure you have the following installed on your system:
+- Node.js (v14.x or higher)
+- npm (v6.x or higher)
+- MongoDB (v4.x or higher)
 
-## Solution
+## Setup Instructions
 
-Contestants are tasked with developing a web-based Smart Transport Management System for
-Neotropolis. The system should have the following features:
+### Backend (Express.js)
+1. *Clone the repository*:
+    bash
+    git clone https://github.com/yourusername/ai-talent-acquisition-platform.git
+    cd ai-talent-acquisition-platform/backend
+    
 
-- Digital Transport Pass (DTP) System: Issue digital tickets to users upon parking, which serve as a comprehensive transport pass for Neotropolis.
-- Real-time Transport Tracking: Provide users with real-time tracking of public transport vehicles and accurate arrival times.
-- Integrated Payment System: Allow users to manage and top-up their transport passes, and make contactless payments for all transport services.
-- Traffic Optimization and Management: Implement algorithms to analyze traffic patterns, optimize signal timings, and provide alternative routes during congestion.
-- User-Friendly Web Interface: Develop an intuitive web interface where users can easily manage their transport pass, view options, make payments, and track their journey history.
+2. *Install dependencies*:
+    bash
+    npm install
+    
 
-## Technical Requirements
+3. *Set up environment variables*:
+    Create a .env file in the backend directory and add the following:
+    env
+    PORT=5000
+    MONGO_URI=your_mongodb_connection_string
+    
 
-- Build the application using any modern web framework.
-- Use an efficient database to store information about users, vehicles, parking spaces, public transport, and payments.
-- Implement RESTful APIs to facilitate communication between the frontend and backend.
-  Note: You can use an API Manager Platform (Postman/insomnia) when demonstrating APIs.
+4. *Start the server*:
+    bash
+    npm start
+    
 
-- All the Major entities (such as Users, TransportPass, etc.…) should have full CRUD (Create, Read, Update Delete) operations and both API and your solutions should be able to demonstrate it.
+### Frontend (Next.js)
+1. *Navigate to the client directory*:
+    bash
+    cd ../client
+    
 
-- Ensure the application is scalable to handle a large number of users and data.
+2. *Install dependencies*:
+    bash
+    npm install
+    
 
-- All Endpoints must use proper HTTP Status codes to indicate the status of the request.
-- For any internal Users, use of General Auth Providers is not recommended.
-  For example, using Google Auth or Firebase Auth is not recommended for Internal Users such as Admins or Pharmacies.
+3. *Set up environment variables*:
+    Create a .env.local file in the client directory and add any required environment variables, such as API endpoints.
 
-- Implement security measures to protect user data and prevent unauthorized access.
+4. *Run the development server*:
+    bash
+    npm run dev
+    
 
-## Point Scheme
+## Running the Servers
+To run both servers simultaneously, follow the steps below:
 
-| Feature                                           | Score |
-| ------------------------------------------------- | ----- |
-| Database                                          | 135   |
-| DTP (Digital Transport Pass)                      | 180   |
-| Real-time Tracking                                | 70    |
-| Interface                                         | 205   |
-| UI                                                | 30    |
-| Video Submission                                  | 100   |
-| Final Submission                                  | 60    |
-| Teamplay                                          | 68    |
-| Admin Dashboard                                   | 152   |
+1. *Start the backend server*:
+    bash
+    cd backend
+    npm start
+    
 
-## Tasks Breakdown
+2. *Start the frontend server*:
+    Open a new terminal window/tab, then:
+    bash
+    cd client
+    npm run dev
+    
 
-- Task 01: Backend Development and Database
+The backend server will be running on http://localhost:5000 and the frontend server on http://localhost:3000.
 
-  - Develop backend logic for issuing digital tickets, managing transport data, and handling payments.
-  - Implement an efficient database to store all necessary information.
+## Contributing
+We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for more details on how to get started.
 
-- Task 02: Real-time Transport Tracking and Optimization (API Expected)
-
-  - Implement real-time tracking of public transport vehicles.
-  - Develop algorithms for traffic optimization and alternative route suggestions.
-
-- Task 03: Integrated Payment System
-
-  - Implement payment processing for topping up transport passes and making payments for parking and public transport.
-
-- Task 04: User-Friendly Web Interface
-
-  - Design and develop an intuitive web interface for users to manage their transport pass, view transport options, and make payments.
-  - High-Tech Futuristic User Interface (Additional Points)
-
-- Task 05: Teamwork and Collaboration
-
-  - Collaborate effectively as a team to ensure seamless integration of all components and deliver a functional Smart Transport Management System for Neotropolis.
-
-## Additional Resources
-
-- Wireframe: https://www.figma.com/design/8hmvmPLRZViPUbKujWTpVp/Duothan-4.0-Wireframe?node-id=0%3A1&t=W9hnqfbdksw0KYU0-1
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
