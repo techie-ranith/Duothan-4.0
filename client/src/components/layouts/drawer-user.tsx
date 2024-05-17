@@ -142,8 +142,8 @@ const MiniDrawer = (props: MiniDrawerProps) => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['overview','Hiring', 'Manage', 'discussions', 'Settings'].map((text, index) => (
-            <Link href={`/employer/${text.toLowerCase()}`} key={text}>
+          {['Point System', 'Parking(Map)', 'Journey History', 'Public Transport'].map((text, index) => (
+            <Link href={`/user/${text.toLowerCase()}`} key={text}>
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
