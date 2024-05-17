@@ -50,7 +50,7 @@ export default function Signin () {
       }
     } catch (error) {
       console.error('Fetch error:', error);
-      alert('Sign up failed: Network error');
+      setError('Sign up failed for an unknown reason');
     }
   
 
@@ -123,7 +123,7 @@ export default function Signin () {
 
                 <Typography level="body-sm">
                  Already have a account ?{' '}
-                  <Link href="#replace-with-a-link" level="title-sm">
+                  <Link href="/signin" level="title-sm">
                     Sign In!
                   </Link>
                 </Typography>
@@ -150,22 +150,22 @@ export default function Signin () {
 
                 <FormControl required>
                   <FormLabel style={{ color: 'white' }}>Email</FormLabel>
-                  <Input type="email" name="email" onChange={(e:any)=>setEmail(e.target.value)} />
+                  <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} />
                 </FormControl>
 
                 <FormControl >
                   <FormLabel style={{ color: 'white' }}>First Name</FormLabel>
-                  <Input type="text" name="firstname"  onChange={(e:any)=>setFirstname(e.target.value)}/>
+                  <Input type="text" name="firstname"  onChange={(e)=>setFirstname(e.target.value)}/>
                 </FormControl>
 
                 <FormControl required>
                   <FormLabel style={{ color: 'white' }}>Last Name</FormLabel>
-                  <Input type="text" name="lastname" onChange={(e:any)=>setLastname(e.target.value)} />
+                  <Input type="text" name="lastname" onChange={(e)=>setLastname(e.target.value)} />
                 </FormControl>
 
                 <FormControl required>
                   <FormLabel style={{ color: 'white' }}>Password</FormLabel>
-                  <Input type="password" name="password" onChange={(e:any)=>setPassword(e.target.value)}/>
+                  <Input type="password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
                 </FormControl>
                 {error && <Typography color="danger" sx={{ mt: 1 }}>{error}</Typography>}
                 <Stack gap={4} sx={{ mt: 2 }}>
