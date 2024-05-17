@@ -130,6 +130,14 @@ export default function Signin () {
                   <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} />
                 </FormControl>
                 <FormControl required>
+                  <FormLabel>New FirstName</FormLabel>
+                  <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} />
+                </FormControl>
+                <FormControl required>
+                  <FormLabel>New LastName</FormLabel>
+                  <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} />
+                </FormControl>
+                <FormControl required>
                   <FormLabel>New Password</FormLabel>
                   <Input type="password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
                 </FormControl>
