@@ -1,16 +1,16 @@
 const {validateId,getItems, getItem,createItem, updateItem, deleteItem, deleteItems } = require('./CommonControllers')
 
-const adminmodel = "Admin";
+const usermodel = "Users";
 
 
 //get a single job
-const getSingleJob = async (req,res) => {
+const getUser = async (req,res) => {
     try{
         const id = req.params.id
         if(!validateId(id,res)){
             return;
         }
-        const Job = await getItem(adminmodel, id,res);
+        const Job = await getItem(usermodel, id,res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -19,9 +19,9 @@ const getSingleJob = async (req,res) => {
 
 
 //get all jobs
-const getAllJobs = async (req,res) => {
+const getAllUsers = async (req,res) => {
     try{
-        const Job = await getItems(adminmodel, res);
+        const Job = await getItems(usermodel, res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -30,10 +30,10 @@ const getAllJobs = async (req,res) => {
 
 
 // create a new job
-const createNewJob = async (req,res) => {
+const createUser = async (req,res) => {
     try{
         const data = req.body 
-        const Job = await createItem(adminmodel, data, res);
+        const Job = await createItem(usermodel, data, res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -42,14 +42,14 @@ const createNewJob = async (req,res) => {
 
 
 //update an existing job
-const updatedJob = async (req,res) => {
+const updatedUser = async (req,res) => {
     try{
         const id = req.params.id
         if(!validateId(id,res)){
             return;
         }
         const data = req.body
-        const Job = await updateItem(adminmodel,id,data,res);
+        const Job = await updateItem(usermodel,id,data,res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -57,13 +57,13 @@ const updatedJob = async (req,res) => {
 }
 
 // delete a single job
-const deleteSingleJob = async (req,res) => {
+const deleteUser = async (req,res) => {
     try{
         const id = req.params.id
         if(!validateId(id,res)){
             return;
         }
-        const Job = await deleteItem(adminmodel,id,res);
+        const Job = await deleteItem(usermodel,id,res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -71,10 +71,10 @@ const deleteSingleJob = async (req,res) => {
 }
 
 
-// delete all jobs
-const deleteAllJobs = async (req,res) => {
+// delete all users
+const deleteUsers = async (req,res) => {
     try{
-        const Job = await deleteItems(adminmodel,res);
+        const Job = await deleteItems(usermodel,res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -83,10 +83,10 @@ const deleteAllJobs = async (req,res) => {
 
 
 module.exports = {
-    getSingleJob,
-    getAllJobs,
-    createNewJob,
-    updatedJob,
-    deleteSingleJob,
-    deleteAllJobs
+    getUser,
+    getAllUsers,
+    createUser,
+    updatedUser,
+    deleteUser,
+    deleteUsers
 }

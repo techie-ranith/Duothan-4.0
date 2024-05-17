@@ -1,5 +1,7 @@
-const JobModel = require('../Models/Job')
-const {validateId,getAllItems, getSingleItem,createNewItem, updateExistingItem, deleteSingleItem, deleteAllItems } = require('./CommonControllers')
+const {validateId,getItems, getItem,createItem, updateItem, deleteItem, deleteItems } = require('./CommonControllers')
+
+const adminmodel = "Admin";
+
 
 //get a single job
 const getSingleJob = async (req,res) => {
@@ -8,7 +10,7 @@ const getSingleJob = async (req,res) => {
         if(!validateId(id,res)){
             return;
         }
-        const Job = await getSingleItem(id,res);
+        const Job = await getItem(adminmodel, id,res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -19,7 +21,7 @@ const getSingleJob = async (req,res) => {
 //get all jobs
 const getAllJobs = async (req,res) => {
     try{
-        const Job = await getAllItems(res);
+        const Job = await getItems(adminmodel, res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -31,7 +33,7 @@ const getAllJobs = async (req,res) => {
 const createNewJob = async (req,res) => {
     try{
         const data = req.body 
-        const Job = await createNewItem(data,res);
+        const Job = await createItem(adminmodel, data, res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -47,7 +49,7 @@ const updatedJob = async (req,res) => {
             return;
         }
         const data = req.body
-        const Job = await updateExistingItem(id,data,res);
+        const Job = await updateItem(adminmodel,id,data,res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -61,7 +63,7 @@ const deleteSingleJob = async (req,res) => {
         if(!validateId(id,res)){
             return;
         }
-        const Job = await deleteSingleItem(id,res);
+        const Job = await deleteItem(adminmodel,id,res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
@@ -72,7 +74,7 @@ const deleteSingleJob = async (req,res) => {
 // delete all jobs
 const deleteAllJobs = async (req,res) => {
     try{
-        const Job = await deleteAllItems(res);
+        const Job = await deleteItems(adminmodel,res);
         res.status(200).json({Job})
     }catch(error){
         res.status(500).json({error: error.message});
