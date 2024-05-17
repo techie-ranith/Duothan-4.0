@@ -14,11 +14,11 @@ export default function ButtonAppBar() {
   const navigate = useNavigate();
 
   const handleSignInClick = () => {
-    navigate("@/app/(pages)/(auth)/signin/page");
+    navigate("/signin");
   };
 
   const handleSignUpClick = () => {
-    navigate("@/app/(pages)/(auth)/signup/page");
+    navigate("/signup");
   }
 
   return (
@@ -28,6 +28,9 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Logo
           </Typography>
+          <Button variant="outlined" color="inherit" sx={{ marginRight: 1 }} onClick={handleSignInClick}>
+            Login as Admin
+          </Button>
           <Button variant="outlined" color="inherit" sx={{ marginRight: 1 }} onClick={handleSignInClick}>
             Sign In
           </Button>
