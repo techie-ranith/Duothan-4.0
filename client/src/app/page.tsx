@@ -6,6 +6,7 @@ import { Sign } from "crypto";
 import JobCard from "@/components/layouts/JobCard";
 import Container from "@/components/layouts/Container";
 import Navigation from "@/components/layouts/Navigation";
+import Footer from "@/components/layouts/Footer";
 import SignInPage from "@/app/(pages)/(auth)/signin/page";
 import SignUpPage from "@/app/(pages)/(auth)/signup/page";
 
@@ -13,12 +14,16 @@ const page = () => {
   return (
     <main>
        <Router>
-      <Navigation />
-      <Routes>
-        <Route path="@/app/(pages)/(auth)/signin/page" element={<SignInPage />} />
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Navigation />
+        <div style={{ flex: 1 }}>
+          <Routes>
+          <Route path="@/app/(pages)/(auth)/signin/page" element={<SignInPage />} />
         <Route path="@/app/(pages)/(auth)/signup/page" element={<SignUpPage />} />
-        {/* Define other routes here */}
-      </Routes>
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
     </main>
   );
