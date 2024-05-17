@@ -1,65 +1,98 @@
-# AI-Driven Talent Acquisition Platform
+# Duothan 4.0
 
-Welcome to the AI-Driven Talent Acquisition Platform repository! This platform is designed to revolutionize the recruitment process for businesses by leveraging advanced AI technologies. Below you'll find a brief overview of the product and instructions for setting up the MERN (MongoDB, Express.js, React.js, Node.js) stack for both the client and server sides.
+Neotropolis, a cutting-edge futuristic city, is facing challenges in managing its transport system efficiently. With the city's rapid growth and technological advancements, traditional transport systems are proving inadequate. As a result, the city is witnessing traffic congestion, parking issues, and inefficient public transport.
 
-## Product Description
+To address these challenges, Neotropolis aims to implement a Smart Transport Management System (STMS) that integrates various transport modes, optimizes traffic flow, and provides seamless connectivity for residents and visitors.
 
-The AI-Driven Talent Acquisition Platform offers a comprehensive suite of features to streamline the recruitment process:
+## Problem Statement
 
-- **Automated Candidate Screening:** Utilize AI algorithms to automatically screen candidates based on predefined criteria, saving time and effort.
-- **Skill-Based Matching:** Match candidates with job requirements based on their skills and qualifications, ensuring the best fit for each position.
-- **Predictive Analytics:** Leverage predictive analytics to forecast candidate performance, helping to make informed hiring decisions.
-- **Personalized Candidate Engagement:** Engage with candidates through personalized communication tools, fostering better candidate relationships.
+When someone arrives in Neotropolis, they should park their vehicle at the "Collective Neotropolis Parkinglot". The system will issue a digital ticket through a web interface, which will serve as a comprehensive transport pass. This digital ticket should control everything related to transport, including public transport access, payments, tracking, and more. However, building such a system requires addressing several key functionalities:
 
-The platform's intuitive interface provides users with a seamless experience, from posting job openings to onboarding successful candidates.
+1. Digital Transport Pass:
+   - Issue digital tickets to users upon parking.
+   - Integrate with public transport systems for seamless access.
+   - Enable cashless payments for parking and public transport.
+2. Real-time Transport Tracking:
+   - Track the location of public transport vehicles in real-time.
+   - Provide users with accurate arrival times and route information.
+3. Integrated Payment System:
+   - Allow users to top-up their transport passes.
+   - Enable contactless payments for all transport services.
+4. Traffic Optimization and Management:
+   - Analyze traffic patterns to optimize signal timings.
+   - Provide alternative routes during congestion to reduce travel time.
+5. User-Friendly Web Interface:
+   - Enable users to easily manage their transport pass.
+   - Futuristic User Interface
+   - Provide a comprehensive dashboard displaying transport options, payments, and journey history.
 
-## Execution Steps for MERN Stack
+## Solution
 
-### Client Side
+Contestants are tasked with developing a web-based Smart Transport Management System for
+Neotropolis. The system should have the following features:
 
-1. **Clone the Repository:**
-   ```bash
-   git clone <repository-url>
-   cd client
-   ```
+- Digital Transport Pass (DTP) System: Issue digital tickets to users upon parking, which serve as a comprehensive transport pass for Neotropolis.
+- Real-time Transport Tracking: Provide users with real-time tracking of public transport vehicles and accurate arrival times.
+- Integrated Payment System: Allow users to manage and top-up their transport passes, and make contactless payments for all transport services.
+- Traffic Optimization and Management: Implement algorithms to analyze traffic patterns, optimize signal timings, and provide alternative routes during congestion.
+- User-Friendly Web Interface: Develop an intuitive web interface where users can easily manage their transport pass, view options, make payments, and track their journey history.
 
-2. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
+## Technical Requirements
 
-3. **Configure Environment Variables:**
-   Create a `.env` file in the `client` directory and add necessary environment variables.
+- Build the application using any modern web framework.
+- Use an efficient database to store information about users, vehicles, parking spaces, public transport, and payments.
+- Implement RESTful APIs to facilitate communication between the frontend and backend.
+  Note: You can use an API Manager Platform (Postman/insomnia) when demonstrating APIs.
 
-4. **Run the Development Server:**
-   ```bash
-   npm start
-   ```
+- All the Major entities (such as Users, TransportPass, etc.…) should have full CRUD (Create, Read, Update Delete) operations and both API and your solutions should be able to demonstrate it.
 
-5. **Access the Client Application:**
-   Open your web browser and navigate to `http://localhost:3000`.
+- Ensure the application is scalable to handle a large number of users and data.
 
-### Server Side
+- All Endpoints must use proper HTTP Status codes to indicate the status of the request.
+- For any internal Users, use of General Auth Providers is not recommended.
+  For example, using Google Auth or Firebase Auth is not recommended for Internal Users such as Admins or Pharmacies.
 
-1. **Navigate to the Server Directory:**
-   ```bash
-   cd ../server
-   ```
+- Implement security measures to protect user data and prevent unauthorized access.
 
-2. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
+## Point Scheme
 
-3. **Configure Environment Variables:**
-   Create a `.env` file in the `server` directory and add necessary environment variables.
+| Feature                                           | Score |
+| ------------------------------------------------- | ----- |
+| Database                                          | 135   |
+| DTP (Digital Transport Pass)                      | 180   |
+| Real-time Tracking                                | 70    |
+| Interface                                         | 205   |
+| UI                                                | 30    |
+| Video Submission                                  | 100   |
+| Final Submission                                  | 60    |
+| Teamplay                                          | 68    |
+| Admin Dashboard                                   | 152   |
 
-4. **Run the Server:**
-   ```bash
-   npm start
-   ```
+## Tasks Breakdown
 
-5. **Access the Server API:**
-   The server will be running on `http://localhost:5000`.
+- Task 01: Backend Development and Database
 
-Now you have successfully set up both the client and server sides of the MERN stack for the AI-Driven Talent Acquisition Platform! Happy coding! 🚀
+  - Develop backend logic for issuing digital tickets, managing transport data, and handling payments.
+  - Implement an efficient database to store all necessary information.
+
+- Task 02: Real-time Transport Tracking and Optimization (API Expected)
+
+  - Implement real-time tracking of public transport vehicles.
+  - Develop algorithms for traffic optimization and alternative route suggestions.
+
+- Task 03: Integrated Payment System
+
+  - Implement payment processing for topping up transport passes and making payments for parking and public transport.
+
+- Task 04: User-Friendly Web Interface
+
+  - Design and develop an intuitive web interface for users to manage their transport pass, view transport options, and make payments.
+  - High-Tech Futuristic User Interface (Additional Points)
+
+- Task 05: Teamwork and Collaboration
+
+  - Collaborate effectively as a team to ensure seamless integration of all components and deliver a functional Smart Transport Management System for Neotropolis.
+
+## Additional Resources
+
+- Wireframe: https://www.figma.com/design/8hmvmPLRZViPUbKujWTpVp/Duothan-4.0-Wireframe?node-id=0%3A1&t=W9hnqfbdksw0KYU0-1
