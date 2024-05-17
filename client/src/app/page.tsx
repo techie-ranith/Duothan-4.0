@@ -9,10 +9,11 @@ import Navigation from "@/components/layouts/Navigation";
 import Footer from "@/components/layouts/Footer";
 import SignInPage from "@/app/(pages)/(auth)/signin/page";
 import SignUpPage from "@/app/(pages)/(auth)/signup/page";
-
+import Map from  "@/lib/Map"
 const page = () => {
   return (
     <main>
+   
        <Router>
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navigation />
@@ -21,6 +22,7 @@ const page = () => {
           <Route path="@/app/(pages)/(auth)/signin/page" element={<SignInPage />} />
         <Route path="@/app/(pages)/(auth)/signup/page" element={<SignUpPage />} />
           </Routes>
+          <Map />
         </div>
         <Footer />
       </div>
