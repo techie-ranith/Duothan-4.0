@@ -18,6 +18,7 @@ import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 
 
 export default function Signin () {
@@ -133,6 +134,7 @@ export default function Signin () {
                 color="neutral"
                 fullWidth
                 sx={{ bgcolor: 'rgb(66, 133, 244)' }}
+                onClick={() => signIn('google')}
               >
                 Continue with Google
               </Button>
