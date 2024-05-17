@@ -23,7 +23,7 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.378.0",
     "next": "14.2.1",
-    "next-auth": "^4.0.0",
+    "next-auth": "^4.24.7",
     "nextui-cli": "^0.2.0",
     "react": "^18",
     "react-dom": "^18",
