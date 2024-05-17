@@ -1,14 +1,11 @@
-"use client"
+"use client";
 
-import * as React from "react";
-import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
 export default function ButtonAppBar() {
   const navigate = useNavigate();
@@ -19,19 +16,31 @@ export default function ButtonAppBar() {
 
   const handleSignUpClick = () => {
     navigate("@/app/(pages)/(auth)/signup/page");
-  }
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: "black" }}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, color: "white" }}
+          >
             Logo
           </Typography>
-          <Button variant="outlined" color="inherit" sx={{ marginRight: 1 }} onClick={handleSignInClick}>
+          <Button
+            variant="outlined"
+            sx={{ color: "white", borderColor: "white", marginRight: 1 }}
+            onClick={handleSignInClick}
+          >
             Sign In
           </Button>
-          <Button variant="outlined" color="inherit" sx={{ marginRight: 1 }} onClick={handleSignUpClick}>
+          <Button
+            variant="outlined"
+            sx={{ color: "white", borderColor: "white" }}
+            onClick={handleSignUpClick}
+          >
             Sign Up
           </Button>
         </Toolbar>
@@ -39,4 +48,3 @@ export default function ButtonAppBar() {
     </Box>
   );
 }
-
