@@ -38,7 +38,7 @@ export default function Signin () {
           console.log('Response: logeed');
           const form = e.target;
           form.reset();
-          return '/employee/Overview';
+          window.location.href = 'http://localhost:3000/user/overview';
           setError('');
   
         } else {
