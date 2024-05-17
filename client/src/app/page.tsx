@@ -1,11 +1,15 @@
-import SideBar from "@/components/layouts/Sidebar";
+import MiniDrawer from "@/components/layouts/drawer-employer";
+import Component from "@/components/layouts/Navigation";
 
-const page = () => {
+const Page = () => {
   return (
-    <div className="flex items-center justify-center">
-      <SideBar />
-    </div>
+    <MiniDrawer>
+      <Component />
+      <div className="flex items-center justify-center">
+        {/* Add your content here */}
+      </div>
+    </MiniDrawer>
   );
 };
 
-export default page;
+export default Page;
