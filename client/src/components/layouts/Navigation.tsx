@@ -18,33 +18,52 @@ export default function ButtonAppBar() {
     navigate("/signup");
   };
 
+  const handleAdminLoginClick = () => {
+    navigate("/admin-login");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: "black", padding: 1 }}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, color: "white" }}
+          >
             Logo
           </Typography>
           <Button
             variant="outlined"
-            color="inherit"
-            sx={{ marginRight: 1 }}
-            onClick={handleSignInClick}
+            sx={{
+              color: "white",
+              borderColor: "white",
+              marginRight: 1,
+              "&:hover": { borderColor: "gray" },
+            }}
+            onClick={handleAdminLoginClick}
           >
             Login as Admin
           </Button>
           <Button
             variant="outlined"
-            color="inherit"
-            sx={{ marginRight: 1 }}
+            sx={{
+              color: "white",
+              borderColor: "white",
+              marginRight: 1,
+              "&:hover": { borderColor: "gray" },
+            }}
             onClick={handleSignInClick}
           >
             Sign In
           </Button>
           <Button
             variant="outlined"
-            color="inherit"
-            sx={{ marginRight: 1 }}
+            sx={{
+              color: "white",
+              borderColor: "white",
+              "&:hover": { borderColor: "gray" },
+            }}
             onClick={handleSignUpClick}
           >
             Sign Up
