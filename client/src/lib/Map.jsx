@@ -1,6 +1,7 @@
 "use client";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useEffect, useState } from "react";
+import "leaflet/dist/leaflet.css";
 
 function Map() {
   const [latitude, setLatitude] = useState(null);
@@ -16,24 +17,26 @@ function Map() {
       setLatitude(userLatitude);
       setLongitude(userLongitude);
     }
-  }, []); // Empty dependency array to run the effect only once on mount
+  }, []);
 
-  const mapStyles = {
-    height: "400px",
-    width: "100%",
-  };
+  if (latitude === null || longitude === null) {
+    return <div>Loading...</div>;
+  }
 
-  const defaultCenter = {
-    lat: latitude || 0,
-    lng: longitude || 0,
-  };
+  const position = [latitude, longitude];
 
   return (
-    <LoadScript googleMapsApiKey="f798455d29f5443081ef43ce6eae04e3">
-      <GoogleMap mapContainerStyle={mapStyles} zoom={10} center={defaultCenter}>
-        <Marker position={{ lat: latitude || 0, lng: longitude || 0 }} />
-      </GoogleMap>
-    </LoadScript>
+    <MapContainer center={position} zoom={6} style={{ height: "370px", width: "100%" }}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
+      <Marker position={position}>
+        <Popup>
+          You are here.
+        </Popup>
+      </Marker>
+    </MapContainer>
   );
 }
 
