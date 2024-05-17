@@ -31,8 +31,7 @@ async function generateUniqueDtpCode() {
     // Loop until a unique code is generated
     while (!isDtpUnique) {
         // Generate a new code
-        dtp = Math.random().toString(36).substring(2, 10); // Example code generation logic
-
+        dtp = Math.floor(Math.random() * 90000) + 10000;
         // Check if the generated code already exists in the database
         const existingDtp = await User.findOne({ dtp });
 
@@ -45,8 +44,6 @@ async function generateUniqueDtpCode() {
     return dtp;
 }
 
-// Now you can use the generateUniqueDtpCode function to get a unique code
-const dtp = await generateUniqueDtpCode();
 
 
 
@@ -71,10 +68,14 @@ app.post('/authsignup', async (req, response) => {
         }
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const dtp = 
+       
+         const dtp = await generateUniqueDtpCode();
+
         
         await User.create({ firstname, lastname, email, mobile, username, password: hashedPassword ,dtp});
-        response.status(200).json({ message: 'User registered successfully' });
+        response.status(200).json({ message: 'User registered successfully',dtp});
+
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });  
@@ -88,13 +89,17 @@ app.post('/authsignin', async (req, response) => {
         
     const {username, dtp, password } = req.body; 
     try {
-        const existingUser = await User.findOne({ username });
+        const existingUser = await User.findOne({ username }).maxTimeMS(30000);
         if (!existingUser) {
             return response.status(404).json({ message: 'User not found' });
         }
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
         if (!isPasswordCorrect) {
             return response.status(401).json({ message: 'Invalid credentials' });
+        }
+        
+        if (dtp !== existingUser.dtp) {
+            return response.status(401).json({ message: 'Invalid dtp' });
         }
         response.status(200).json({ message: 'User Logged successfully' });
       
@@ -107,8 +112,6 @@ app.post('/authsignin', async (req, response) => {
 
 
 
-    // Implementation needed here for user login.
-    res.status(200).json({ message: 'Login functionality not implemented' });
 });
 
 app.listen(5000, () => {

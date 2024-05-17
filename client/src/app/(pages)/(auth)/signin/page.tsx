@@ -157,9 +157,9 @@ export default function Signin () {
                   <Input type="text" name="username" onChange={(e)=>SetUsername(e.target.value)}/>
                 </FormControl>
 
-                <FormControl >
+                <FormControl required >
                   <FormLabel style={{ color: 'white' }}>DTP Code</FormLabel>
-                  <Input type="text" name="Dtp" onChange={(e)=>SetUsername(e.target.value)}/>
+                  <Input type="text" name="Dtp" onChange={(e)=>SetDtp(e.target.value)}/>
                 </FormControl>
 
                 <FormControl required>
