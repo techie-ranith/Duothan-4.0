@@ -130,7 +130,13 @@ const MiniDrawer = (props: MiniDrawerProps) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Recruitwise
+            TechTravel
+          </Typography>
+          <Typography sx={{
+              marginRight: 5,pl:170,
+              ...(open && { display: 'none' }),
+            }}>
+            <Link href="/">Logout</Link>
           </Typography>
         </Toolbar>
       </AppBar>
