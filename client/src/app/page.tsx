@@ -9,6 +9,7 @@ import Footer from "@/components/layouts/Footer";
 import SignInPage from "@/app/(pages)/(auth)/signin/page";
 import SignUpPage from "@/app/(pages)/(auth)/signup/page";
 import Map from "@/lib/Map";
+import Adminlog from "@/app/(pages)/(auth)/adminlogin/page";
 const page = () => {
   return (
     <main>
@@ -19,6 +20,7 @@ const page = () => {
             <Routes>
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/adminlogin" element={<Adminlog />} />
             </Routes>
             <Map />
           </div>
