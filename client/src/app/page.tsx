@@ -6,7 +6,7 @@ import Footer from "@/components/layouts/Footer";
 import Navigation from "@/components/layouts/Navigation";
 import Map from "@/lib/Map";
 
-import Adminlog from "@/app/(pages)/(auth)/adminlogin/page";
+import Adminlog from "@/app/(pages)/(auth)/adminlog/page";
 
 import UserDetails from "@/lib/UserDetails";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
@@ -21,7 +21,7 @@ const page = () => {
             <Routes>
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/adminlogin" element={<Adminlog />} />
+              <Route path="/adminlog" element={<Adminlog />} />
             </Routes>
             <Map />
             <UserDetails />
