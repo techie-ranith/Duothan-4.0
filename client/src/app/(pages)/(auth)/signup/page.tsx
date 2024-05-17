@@ -28,7 +28,7 @@ export default function Signin () {
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const[confirmPassword, setConfirmPassword] = useState('');
+  const[confirmpassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
 
@@ -40,7 +40,7 @@ export default function Signin () {
       const response = await fetch('http://localhost:5000/authsignup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstname, lastname, email, password, username, mobile})
+        body: JSON.stringify({ firstname, lastname, email, password, username, mobile, confirmpassword})
       });
       if (response.ok) {
        console.log('Response: logeed');
