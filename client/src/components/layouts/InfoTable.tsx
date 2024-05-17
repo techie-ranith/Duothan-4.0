@@ -17,45 +17,32 @@ import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import { visuallyHidden } from "@mui/utils";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-interface UserData {
-  dtpcode: string;
-  id: number;
-  username: string;
-  firstName: string;
-  mobile: string;
-  email: string;
-  status: string;
+interface Column {
+  id: string;
+  label: string;
+  minWidth?: number;
+  align?: 'right';
 }
 
-function InfoTable() {
+interface InfoTableProps {
+  columns: Column[];
+  rows: any[];
+}
+
+const InfoTable: React.FC<InfoTableProps> = ({ columns, rows }) => {
   const [order, setOrder] = React.useState<"asc" | "desc">("asc");
-  const [orderBy, setOrderBy] = React.useState<keyof UserData>("username");
+  const [orderBy, setOrderBy] = React.useState<string>(columns[0].id);
   const [selected, setSelected] = React.useState<number[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const rows: UserData[] = [
-    {
-      id: 1,
-      dtpcode: "DTP123",
-      username: "user1",
-      firstName: "John",
-      mobile: "1234567890",
-      email: "user1@example.com",
-      status: "Active",
-    },
-    // Add more user data as needed
-  ];
-
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
-    property: keyof UserData
+    property: string
   ) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -118,7 +105,7 @@ function InfoTable() {
             id="tableTitle"
             component="div"
           >
-            User Data
+            Data Table
           </Typography>
         </Toolbar>
         <TableContainer>
@@ -142,12 +129,26 @@ function InfoTable() {
                     }}
                   />
                 </TableCell>
-                <TableCell>DTP Code</TableCell>
-                <TableCell>Username</TableCell>
-                <TableCell>First Name</TableCell>
-                <TableCell>Mobile</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Status</TableCell>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    sortDirection={orderBy === column.id ? order : false}
+                  >
+                    <TableSortLabel
+                      active={orderBy === column.id}
+                      direction={orderBy === column.id ? order : 'asc'}
+                      onClick={(event) => handleRequestSort(event, column.id)}
+                    >
+                      {column.label}
+                      {orderBy === column.id ? (
+                        <Box component="span" sx={visuallyHidden}>
+                          {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                        </Box>
+                      ) : null}
+                    </TableSortLabel>
+                  </TableCell>
+                ))}
                 <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
@@ -177,12 +178,11 @@ function InfoTable() {
                           }}
                         />
                       </TableCell>
-                      <TableCell>{row.dtpcode}</TableCell>
-                      <TableCell>{row.username}</TableCell>
-                      <TableCell>{row.firstName}</TableCell>
-                      <TableCell>{row.mobile}</TableCell>
-                      <TableCell>{row.email}</TableCell>
-                      <TableCell>{row.status}</TableCell>
+                      {columns.map((column) => (
+                        <TableCell key={column.id} align={column.align}>
+                          {row[column.id]}
+                        </TableCell>
+                      ))}
                       <TableCell>
                         <IconButton aria-label="edit">
                           <EditIcon />
@@ -209,6 +209,6 @@ function InfoTable() {
       </Paper>
     </Box>
   );
-}
+};
 
 export default InfoTable;
