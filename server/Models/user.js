@@ -33,6 +33,11 @@ const userSchema = new Schema(
             type:String,
             required:true
         },
+        dtp:
+        {
+            type:String,
+            required:true
+        }
     }
     ,{
         timestamps:true,

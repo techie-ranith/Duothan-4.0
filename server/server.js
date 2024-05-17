@@ -17,8 +17,50 @@ connectMongoDB().then(() => {
     process.exit(1); // Stop the application if the database connection fails
 });
 
+
+
+
+
+
+
+
+async function generateUniqueDtpCode() {
+    let dtp;
+    let isDtpUnique = false;
+
+    // Loop until a unique code is generated
+    while (!isDtpUnique) {
+        // Generate a new code
+        dtp = Math.random().toString(36).substring(2, 10); // Example code generation logic
+
+        // Check if the generated code already exists in the database
+        const existingDtp = await User.findOne({ dtp });
+
+        // If the code doesn't exist, set isDtpUnique to true to exit the loop
+        if (!existingDtp) {
+            isDtpUnique = true;
+        }
+    }
+
+    return dtp;
+}
+
+// Now you can use the generateUniqueDtpCode function to get a unique code
+const dtp = await generateUniqueDtpCode();
+
+
+
+
+
+
+
+
+
+
+
 app.post('/authsignup', async (req, response) => {
     const { firstname, lastname, email, password ,username,mobile,confirmpassword} = req.body; 
+    
     try {
         const existingUser = await User.findOne({ username }).maxTimeMS(30000);
         if (existingUser) {
@@ -28,8 +70,10 @@ app.post('/authsignup', async (req, response) => {
             return response.status(400).json({ message: 'Passwords do not match' });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        const dtp = 
         
-        await User.create({ firstname, lastname, email, mobile, username, password: hashedPassword });
+        await User.create({ firstname, lastname, email, mobile, username, password: hashedPassword ,dtp});
         response.status(200).json({ message: 'User registered successfully' });
     } catch (error) {
         console.error(error);
