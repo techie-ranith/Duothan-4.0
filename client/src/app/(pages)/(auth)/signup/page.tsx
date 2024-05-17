@@ -18,13 +18,17 @@ import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 
 
 export default function Signin () {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
+  const [username, setUsername] = useState('');
+  const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const[confirmpassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
 
@@ -36,7 +40,7 @@ export default function Signin () {
       const response = await fetch('http://localhost:5000/authsignup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstname, lastname, email, password })
+        body: JSON.stringify({ firstname, lastname, email, password, username, mobile, confirmpassword})
       });
       if (response.ok) {
        console.log('Response: logeed');
@@ -50,7 +54,7 @@ export default function Signin () {
       }
     } catch (error) {
       console.error('Fetch error:', error);
-      alert('Sign up failed: Network error');
+      setError('Sign up failed for an unknown reason');
     }
   
 
@@ -123,7 +127,7 @@ export default function Signin () {
 
                 <Typography level="body-sm">
                  Already have a account ?{' '}
-                  <Link href="#replace-with-a-link" level="title-sm">
+                  <Link href="/signin" level="title-sm">
                     Sign In!
                   </Link>
                 </Typography>
@@ -133,6 +137,7 @@ export default function Signin () {
                 color="neutral"
                 fullWidth
                 sx={{ bgcolor: 'rgb(66, 133, 244)' }}
+                onClick={() => signIn('google')}
               >
                 Continue with Google
               </Button>
@@ -148,25 +153,49 @@ export default function Signin () {
               >
 
 
-                <FormControl required>
-                  <FormLabel style={{ color: 'white' }}>Email</FormLabel>
-                  <Input type="email" name="email" onChange={(e:any)=>setEmail(e.target.value)} />
-                </FormControl>
+                
 
-                <FormControl >
+                <FormControl ><h4></h4>
                   <FormLabel style={{ color: 'white' }}>First Name</FormLabel>
-                  <Input type="text" name="firstname"  onChange={(e:any)=>setFirstname(e.target.value)}/>
+                  <Input type="text" name="firstname"  onChange={(e)=>setFirstname(e.target.value)}/>
                 </FormControl>
 
                 <FormControl required>
                   <FormLabel style={{ color: 'white' }}>Last Name</FormLabel>
-                  <Input type="text" name="lastname" onChange={(e:any)=>setLastname(e.target.value)} />
+                  <Input type="text" name="lastname" onChange={(e)=>setLastname(e.target.value)} />
                 </FormControl>
 
                 <FormControl required>
-                  <FormLabel style={{ color: 'white' }}>Password</FormLabel>
-                  <Input type="password" name="password" onChange={(e:any)=>setPassword(e.target.value)}/>
+                  <FormLabel style={{ color: 'white' }}>User Name</FormLabel>
+                  <Input type="text" name="username" onChange={(e)=>setUsername(e.target.value)} />
                 </FormControl>
+
+                <FormControl required>
+                  <FormLabel style={{ color: 'white' }}>Mobile Number</FormLabel>
+                  <Input type="text" name="mobile" onChange={(e)=>setMobile(e.target.value)} />
+                </FormControl>
+
+                <FormControl required>
+                  <FormLabel style={{ color: 'white' }}>Email</FormLabel>
+                  <Input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} />
+                </FormControl>
+      
+                <FormControl required>
+                  <FormLabel style={{ color: 'white' }}>Password</FormLabel>
+                  <Input type="password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
+                </FormControl>
+
+
+                <FormControl required>
+                  <FormLabel style={{ color: 'white' }}>Confirm Password</FormLabel>
+                  <Input type="password" name="confirmpassword" onChange={(e)=>setConfirmPassword(e.target.value)}/>
+                </FormControl>
+
+
+
+
+
+
                 {error && <Typography color="danger" sx={{ mt: 1 }}>{error}</Typography>}
                 <Stack gap={4} sx={{ mt: 2 }}>
                   <Box

@@ -10,21 +10,17 @@ import Checkbox from '@mui/joy/Checkbox';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
-import IconButton, { IconButtonProps } from '@mui/joy/IconButton';
 import Link from '@mui/joy/Link';
 import Input from '@mui/joy/Input';
 import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
-import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
-import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
-import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
-import { SetMeal } from '@mui/icons-material';
 
-
+import { signIn } from 'next-auth/react';
 export default function Signin () {
 
-  const [email, SetEmail] = React.useState('');
-  const [password, SetPassword] = React.useState('');                                                                                     
+  const [username, SetUsername] = React.useState('');
+  const [password, SetPassword] = React.useState('');  
+  const [dtp, SetDtp] = React.useState('');                                                                                 
   const [error, setError] = React.useState('');
 
   const haddlesubmitq =async (e:any) =>
@@ -35,23 +31,25 @@ export default function Signin () {
         const response= await fetch('http://localhost:5000/authsignin',{
           method:'POST',
           headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({email,password})
+          body:JSON.stringify({ username, password, dtp})
 
         });
         if (response.ok) {
           console.log('Response: logeed');
           const form = e.target;
           form.reset();
-         
+          return '/employee/Overview';
+          setError('');
   
         } else {
           const result = await response.json();
-        setError(result.message || 'Sign up failed for an unknown reason')
+        setError(result.message || 'Sign in failed for an unknown reason')
         }
       }
-      catch(err:any){
-        console.error('Fetch error:', err);
-        alert('Sign up failed');
+      catch(error){
+        setError( 'Sign in failed for an unknown reason');
+       
+      
       }
 
 
@@ -128,7 +126,7 @@ export default function Signin () {
 
                 <Typography level="body-sm">
                   New to company?{' '}
-                  <Link href="#replace-with-a-link" level="title-sm">
+                  <Link href="/signup" level="title-sm">
                     Sign up!
                   </Link>
                 </Typography>
@@ -138,6 +136,8 @@ export default function Signin () {
                 color="neutral"
                 fullWidth
                 sx={{ bgcolor: 'rgb(66, 133, 244)' }}
+                onClick={() => signIn('google')}
+        
               >
                 Continue with Google
               </Button>
@@ -153,13 +153,22 @@ export default function Signin () {
                 
               >
                 <FormControl required>
-                  <FormLabel style={{ color: 'white' }}>Email</FormLabel>
-                  <Input type="email" name="email" onChange={(e:any)=>SetEmail(e.target.value)}/>
+                  <FormLabel style={{ color: 'white' }}>Username</FormLabel>
+                  <Input type="text" name="username" onChange={(e)=>SetUsername(e.target.value)}/>
                 </FormControl>
+
+                <FormControl >
+                  <FormLabel style={{ color: 'white' }}>DTP Code</FormLabel>
+                  <Input type="text" name="Dtp" onChange={(e)=>SetUsername(e.target.value)}/>
+                </FormControl>
+
                 <FormControl required>
                   <FormLabel style={{ color: 'white' }}>Password</FormLabel>
-                  <Input type="password" name="password" onChange={(e:any)=>SetPassword(e.target.value)} />
+                  <Input type="password" name="password" onChange={(e)=>SetPassword(e.target.value)} />
                 </FormControl>
+
+
+
                 {error && <Typography color="danger" sx={{ mt: 1 }}>{error}</Typography>}
                 <Stack gap={4} sx={{ mt: 2 }}>
                   <Box
