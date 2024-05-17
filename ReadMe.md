@@ -78,7 +78,11 @@ Before you begin, ensure you have met the following requirements:
     http://localhost:4000
     ```
 
-## Project Structure
+## Find the UI in :
+```
+https://www.figma.com/design/oBTyc9CmtrVPF5NzTDyVI1/Untitled?node-id=0%3A1&t=7BQikXu6t2lmjB9F-1
+```
+
 
 Here's a brief overview of the project's structure:
 
