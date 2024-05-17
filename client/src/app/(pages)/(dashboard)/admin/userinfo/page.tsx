@@ -1,8 +1,9 @@
 import React from 'react'
+import InfoTable from '@/components/layouts/InfoTable'
 
 const page = () => {
   return (
-    <div>manage page</div>
+    <div><InfoTable/></div>
   )
 }
 
