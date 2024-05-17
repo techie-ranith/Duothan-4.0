@@ -4,14 +4,14 @@ import React from 'react'
 import InfoTable from "@/components/layouts/InfoTable";
 
 const paymentColumns = [
-  { id: 'paymentId', label: 'Payment ID' },
-  { id: 'amount', label: 'Amount' },
-  { id: 'date', label: 'Date' },
-  { id: 'status', label: 'Status' },
+  { id: 'dtpcode', label: 'DTP Code' },
+  { id: 'username', label: 'Username' },
+  { id: 'value', label: 'Payment Value' },
+  { id: 'type', label: 'Payment Type' },
 ];
 
 const paymentData = [
-  { id: 1, paymentId: "P001", amount: "100.00", date: "2023-05-17", status: "Completed" },
+  { id: 1, dtpcode: "DTP001", username: "user1", value: "500.00", type: "Cash" },
   // Add more payment data as needed
 ];
 
