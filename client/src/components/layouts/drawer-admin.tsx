@@ -142,7 +142,7 @@ const MiniDrawer = (props: MiniDrawerProps) => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Overview', 'Userinfo', 'Payment', 'admin', 'profile','user-add'].map((text, index) => (
+          {['Overview', 'Userinfo', 'Payment', 'admin', 'profile','useradd'].map((text, index) => (
             <Link href={`/admin/${text.toLowerCase()}`} key={text}>
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
