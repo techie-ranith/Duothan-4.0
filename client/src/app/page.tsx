@@ -1,14 +1,12 @@
 "use client";
 
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Sign } from "crypto";
-import Container from "@/components/layouts/Container";
-import Navigation from "@/components/layouts/Navigation";
-import Footer from "@/components/layouts/Footer";
 import SignInPage from "@/app/(pages)/(auth)/signin/page";
 import SignUpPage from "@/app/(pages)/(auth)/signup/page";
+import Footer from "@/components/layouts/Footer";
+import Navigation from "@/components/layouts/Navigation";
 import Map from "@/lib/Map";
+import UserDetails from "@/lib/UserDetails";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 const page = () => {
   return (
     <main>
@@ -21,6 +19,7 @@ const page = () => {
               <Route path="/signup" element={<SignUpPage />} />
             </Routes>
             <Map />
+            <UserDetails />
           </div>
           <Footer />
         </div>
